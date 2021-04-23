@@ -17,8 +17,20 @@ public:
   ext_vector<int> get_avail() const { return avail; }
   bool is_avail(const ext_vector<int>& req) const { return req < avail; }
   
-  bool is_safe(int id, const ext_vector<int>& req) { return true; }   // TODO: determine if alloc is safe
+  bool is_safe(int id, const ext_vector<int>& req) {    // TODO: determine if alloc is safe
 
+    bool truefalse = false;
+    ext_vector<int> bankptr = this->avail;
+    bankptr -= req;
+
+    for(size_t i = 0; i < this->avail.size(); i++){
+      if(i == id) continue;
+      if(bankptr >= this->customers[i]->create_req()){
+         truefalse = true;
+      }
+      
+    return truefalse;  
+  }
   bool req_approved(int id, const ext_vector<int>& req) {
     if (req > avail) { return false; }
 
