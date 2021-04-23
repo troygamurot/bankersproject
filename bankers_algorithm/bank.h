@@ -28,7 +28,7 @@ public:
       if(bankptr >= this->customers[i]->create_req()){
          truefalse = true;
       }
-      
+    }
     return truefalse;  
   }
   bool req_approved(int id, const ext_vector<int>& req) {
